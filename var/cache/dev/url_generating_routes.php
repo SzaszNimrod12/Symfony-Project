@@ -4,5 +4,5 @@
 
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
-    'movies' => [['name'], ['name' => null, '_controller' => 'App\\Controller\\MoviesController::index'], [], [['variable', '/', '[^/]++', 'name', true], ['text', '/movies']], [], [], []],
+    'movies' => [[], ['_controller' => 'App\\Controller\\MoviesController::index'], [], [['text', '/movies']], [], [], []],
 ];
