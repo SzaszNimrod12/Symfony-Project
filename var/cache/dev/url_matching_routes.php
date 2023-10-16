@@ -8,7 +8,7 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
-        '/movies' => [[['_route' => 'app_movies', '_controller' => 'App\\Controller\\MoviesController::index'], null, null, null, false, false, null]],
+        '/movies' => [[['_route' => 'movies', '_controller' => 'App\\Controller\\MoviesController::index'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

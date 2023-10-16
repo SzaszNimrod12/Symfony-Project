@@ -9,13 +9,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MoviesController extends AbstractController
 {
-    #[Route('/movies', name: 'app_movies')]
-    public function index(): JsonResponse
+    #[Route('/movies', name: 'movies' )]
+    public function index(): Response
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/MoviesController.php',
-        ]);
+       $movies = ["Avengers","Inception","Loki","Black Widow" ];
+       return $this->render('index.html.twig',array(
+        'movies'=> $movies
+       ));
 
     }    
     
