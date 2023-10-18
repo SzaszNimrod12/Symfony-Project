@@ -6,25 +6,31 @@ use App\Repository\MovieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MovieRepository::class)]
 class Movie
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3)]
     private ?string $title = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?int $realeseYear = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, type: "string")]
     private ?string $imagePath = null;
 
     #[ORM\ManyToMany(targetEntity: Actor::class, inversedBy: 'movies')]
@@ -33,6 +39,7 @@ class Movie
     public function __construct()
     {
         $this->actors = new ArrayCollection();
+        $this->imagePath = '';
     }
 
     public function getId(): ?int
@@ -45,7 +52,7 @@ class Movie
         return $this->title;
     }
 
-    public function setTitle(string $title): static
+    public function setTitle(?string $title): static
     {
         $this->title = $title;
 
@@ -57,7 +64,7 @@ class Movie
         return $this->realeseYear;
     }
 
-    public function setRealeseYear(int $realeseYear): static
+    public function setRealeseYear(?int $realeseYear): static
     {
         $this->realeseYear = $realeseYear;
 
@@ -81,7 +88,7 @@ class Movie
         return $this->imagePath;
     }
 
-    public function setImagePath(string $imagePath): static
+    public function setImagePath(?string $imagePath): static
     {
         $this->imagePath = $imagePath;
 
